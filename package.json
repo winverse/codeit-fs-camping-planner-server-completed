@@ -8,8 +8,8 @@
     "build": "tsc",
     "start": "node --env-file=./env/.env.development dist/main.js",
     "typecheck": "tsc --noEmit",
-    "contract:emit": "prisma contract emit",
-    "db:init": "dotenv -e ./env/.env.development -- prisma db init",
+    "prisma:emit": "dotenv -e ./env/.env.development -- prisma contract emit",
+    "prisma:init": "dotenv -e ./env/.env.development -- prisma db init",
     "campsites:sync": "pnpm build && node --env-file=./env/.env.development dist/scripts/sync-campsites.js"
   },
   "keywords": [],
