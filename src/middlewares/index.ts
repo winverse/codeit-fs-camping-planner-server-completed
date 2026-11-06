@@ -1,3 +1,4 @@
+export { cors } from "./cors.middleware.js";
 export {
   errorHandler,
   type ErrorResponse,

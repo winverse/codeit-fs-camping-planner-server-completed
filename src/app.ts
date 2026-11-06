@@ -1,7 +1,7 @@
 import { injectable } from "tsyringe";
 import express, { type Express } from "express";
 import { Controller } from "#controllers";
-import { errorHandler } from "#middlewares";
+import { cors, errorHandler } from "#middlewares";
 
 @injectable()
 export class App {
@@ -15,6 +15,7 @@ export class App {
   }
 
   private middleware() {
+    this.app.use(cors);
     this.app.use(express.json());
   }
 
