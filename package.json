@@ -1,0 +1,54 @@
+{
+  "name": "camping-planner-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --watch src --ext ts --exec \"pnpm build && node --env-file=./env/.env.development dist/main.js\"",
+    "build": "tsc",
+    "start": "node --env-file=./env/.env.development dist/main.js",
+    "typecheck": "tsc --noEmit",
+    "contract:emit": "prisma contract emit",
+    "db:init": "dotenv -e ./env/.env.development -- prisma db init",
+    "campsites:sync": "pnpm build && node --env-file=./env/.env.development dist/scripts/sync-campsites.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.3.0",
+      "onFail": "download"
+    }
+  },
+  "type": "module",
+  "imports": {
+    "#config": "./dist/config/config.js",
+    "#prisma/*": "./dist/prisma/*",
+    "#repositories": "./dist/repositories/index.js",
+    "#constants": "./dist/common/constants/index.js",
+    "#exceptions": "./dist/common/exceptions/index.js",
+    "#schemas": "./dist/common/schemas/index.js",
+    "#mappers": "./dist/common/mappers/index.js",
+    "#controllers": "./dist/controllers/index.js",
+    "#services": "./dist/services/index.js",
+    "#middlewares": "./dist/middlewares/index.js",
+    "#providers": "./dist/providers/index.js"
+  },
+  "dependencies": {
+    "@prisma/orm-postgres": "8.0.0-rc.20",
+    "express": "^5.3.0",
+    "reflect-metadata": "^0.2.2",
+    "tsyringe": "^4.10.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.6",
+    "dotenv-cli": "^11.1.0",
+    "nodemon": "^3.1.14",
+    "prisma": "8.0.0-rc.27",
+    "typescript": "^7.0.2"
+  }
+}

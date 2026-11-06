@@ -1,0 +1,34 @@
+// use prisma-8
+enum TripStatus {
+  @@type("pg/text@1")
+  wish     = "wish"
+  booked   = "booked"
+  done     = "done"
+  canceled = "canceled"
+}
+
+model Campsite {
+  id         Int     @id @default(autoincrement())
+  contentId  String  @unique
+  name       String
+  intro      String
+  region     String
+  city       String
+  address    String
+  industries String
+  facilities String
+  petAllowed Boolean
+  imageUrl   String?
+  trips      Trip[]
+}
+
+model Trip {
+  id         Int               @id @default(autoincrement())
+  campsite   Campsite          @relation(fields: [campsiteId], references: [id])
+  campsiteId Int
+  people     Int
+  status     TripStatus        @default(wish)
+  rating     Int?
+  memo       String            @default("")
+  createdAt  TimestamptzString @default(now())
+}
