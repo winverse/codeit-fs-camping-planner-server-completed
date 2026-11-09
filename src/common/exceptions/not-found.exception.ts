@@ -1,5 +1,5 @@
-import { HTTP_STATUS } from "../constants/index.js";
-import { HttpException } from "./http.exception.js";
+import { HTTP_STATUS } from '#constants';
+import { HttpException } from './http.exception.js';
 
 export class NotFoundException extends HttpException {
   constructor(message: string) {

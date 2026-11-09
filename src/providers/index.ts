@@ -1,1 +1,1 @@
-export { GoCampingProvider } from "./gocamping.provider.js";
+export * from './gocamping.provider.js';

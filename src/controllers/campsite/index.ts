@@ -1,1 +1,1 @@
-export { CampsiteController } from "./campsite.controller.js";
+export * from './campsite.controller.js';

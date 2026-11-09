@@ -1,18 +1,18 @@
-import { z } from "zod";
-import { config } from "#config";
-import { goCampingResponseSchema, type GoCampingItem } from "#schemas";
+import { z } from 'zod';
+import { config } from '#config';
+import { goCampingResponseSchema } from '#schemas';
 
-const BASE_URL = "https://apis.data.go.kr/B551011/GoCamping";
+const BASE_URL = 'https://apis.data.go.kr/B551011/GoCamping';
 
 export class GoCampingProvider {
-  async fetchCampsites(): Promise<GoCampingItem[]> {
+  async fetchCampsites() {
     const params = new URLSearchParams({
       serviceKey: config.GOCAMPING_SERVICE_KEY,
-      MobileOS: "ETC",
-      MobileApp: "CampingPlanner",
-      _type: "json",
-      numOfRows: "60",
-      pageNo: "1",
+      MobileOS: 'ETC',
+      MobileApp: 'CampingPlanner',
+      _type: 'json',
+      numOfRows: '60',
+      pageNo: '1',
     });
 
     const response = await fetch(`${BASE_URL}/basedList?${params}`);
@@ -22,7 +22,7 @@ export class GoCampingProvider {
       );
     }
 
-    const body: unknown = await response.json();
+    const body = await response.json();
 
     const result = goCampingResponseSchema.safeParse(body);
     if (!result.success) {

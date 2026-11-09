@@ -1,23 +1,25 @@
-import { injectable } from "tsyringe";
-import { PrismaService } from "#prisma/db.js";
-import type { CampsiteData } from "#prisma/models.js";
+import type { CampsiteData } from '#prisma/models.js';
+import type { Cradle } from '../common/di/container.js';
 
-@injectable()
 export class CampsiteRepository {
-  constructor(private readonly prisma: PrismaService) {}
+  #db: Cradle['db'];
+
+  constructor({ db }: Pick<Cradle, 'db'>) {
+    this.#db = db;
+  }
 
   async findMany(petAllowed?: boolean) {
-    return this.prisma.db.orm.public.Campsite.where({ petAllowed })
+    return this.#db.orm.public.Campsite.where({ petAllowed })
       .orderBy((c) => c.id.asc())
       .all();
   }
 
   async findById(id: number) {
-    return this.prisma.db.orm.public.Campsite.where({ id }).first();
+    return this.#db.orm.public.Campsite.where({ id }).first();
   }
 
   async upsertByContentId(data: CampsiteData) {
-    return this.prisma.db.orm.public.Campsite.upsert({
+    return this.#db.orm.public.Campsite.upsert({
       create: data,
       update: data,
       conflictOn: { contentId: data.contentId },

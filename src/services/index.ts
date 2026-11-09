@@ -1,2 +1,2 @@
-export { CampsiteService } from "./campsite.service.js";
-export { TripService } from "./trip.service.js";
+export * from './campsite.service.js';
+export * from './trip.service.js';

@@ -5,13 +5,16 @@
     "moduleResolution": "NodeNext",
     "types": ["node"],
     "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
-    "noEmitOnError": true,
     "skipLibCheck": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
+    "noEmitOnError": true,
     "rootDir": "./src",
     "outDir": "./dist"
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src"]
 }

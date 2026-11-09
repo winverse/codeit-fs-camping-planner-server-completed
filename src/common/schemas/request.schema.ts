@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const idParamSchema = z.object({
   id: z.coerce.number().int().min(1),

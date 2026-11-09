@@ -1,33 +1,32 @@
-import { injectable } from "tsyringe";
-import express, { type Express } from "express";
-import { Controller } from "#controllers";
-import { cors, errorHandler } from "#middlewares";
+import type { Express } from 'express';
+import express from 'express';
+import type { Controller } from '#controllers';
+import { cors, errorHandler } from '#middlewares';
 
-@injectable()
 export class App {
-  public readonly app: Express;
+  app: Express;
 
-  constructor(private readonly controller: Controller) {
+  constructor(controller: Controller) {
     this.app = express();
     this.middleware();
-    this.routes();
+    this.routes(controller);
     this.errorHandling();
   }
 
-  private middleware() {
+  middleware() {
     this.app.use(cors);
     this.app.use(express.json());
   }
 
-  private routes() {
-    this.app.use("/api", this.controller.routes());
+  routes(controller: Controller) {
+    this.app.use('/api', controller.routes());
   }
 
-  private errorHandling() {
+  errorHandling() {
     this.app.use(errorHandler);
   }
 
-  public listen(port: number) {
+  listen(port: number) {
     return new Promise<void>((resolve, reject) => {
       this.app.listen(port, (error) => {
         if (error) {

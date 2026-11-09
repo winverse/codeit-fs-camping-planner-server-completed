@@ -1,6 +1,2 @@
-export { CampsiteRepository } from "./campsite.repository.js";
-export {
-  TripRepository,
-  type TripCreateData,
-  type TripUpdateData,
-} from "./trip.repository.js";
+export * from './campsite.repository.js';
+export * from './trip.repository.js';

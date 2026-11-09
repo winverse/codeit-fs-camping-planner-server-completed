@@ -1,7 +1,14 @@
-import { Router } from "express";
+import type { Router } from 'express';
+import express from 'express';
 
-export abstract class BaseController {
-  protected readonly router: Router = Router();
+export class BaseController {
+  router: Router;
 
-  abstract routes(): Router;
+  constructor() {
+    this.router = express.Router();
+  }
+
+  routes() {
+    throw new Error('Method not implemented.');
+  }
 }

@@ -1,1 +1,1 @@
-export { toCampsiteData } from "./gocamping.mapper.js";
+export * from './gocamping.mapper.js';

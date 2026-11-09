@@ -2,26 +2,7 @@
   "name": "camping-planner-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "nodemon --watch src --ext ts --exec \"pnpm build && node --env-file=./env/.env.development dist/main.js\"",
-    "build": "tsc",
-    "start": "node --env-file=./env/.env.development dist/main.js",
-    "typecheck": "tsc --noEmit",
-    "prisma:emit": "dotenv -e ./env/.env.development -- prisma contract emit",
-    "prisma:init": "dotenv -e ./env/.env.development -- prisma db init",
-    "campsites:sync": "pnpm build && node --env-file=./env/.env.development dist/scripts/sync-campsites.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devEngines": {
-    "packageManager": {
-      "name": "pnpm",
-      "version": "^11.3.0",
-      "onFail": "download"
-    }
-  },
+  "main": "./dist/main.js",
   "type": "module",
   "imports": {
     "#config": "./dist/config/config.js",
@@ -36,14 +17,34 @@
     "#middlewares": "./dist/middlewares/index.js",
     "#providers": "./dist/providers/index.js"
   },
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon --watch src --ext ts --exec \"pnpm build && node --env-file=./env/.env.development dist/main.js\"",
+    "start": "node --env-file=./env/.env.development dist/main.js",
+    "prisma:emit": "dotenv -e ./env/.env.development -- prisma contract emit",
+    "prisma:init": "dotenv -e ./env/.env.development -- prisma db init",
+    "campsites:sync": "pnpm build && node --env-file=./env/.env.development dist/scripts/sync-campsites.js",
+    "lint": "biome check",
+    "format": "biome format --write"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.3.0",
+      "onFail": "download"
+    }
+  },
   "dependencies": {
     "@prisma/orm-postgres": "8.0.0-rc.20",
+    "awilix": "^13.0.5",
     "express": "^5.3.0",
-    "reflect-metadata": "^0.2.2",
-    "tsyringe": "^4.10.0",
     "zod": "^4.6.7"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.6.6",
     "@types/express": "^5.0.6",
     "@types/node": "^26.6.6",
     "dotenv-cli": "^11.1.0",
