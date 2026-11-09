@@ -1,4 +1,4 @@
-# Express TypeScript Completed
+# Camping Planner Server Completed
 
 이 프로젝트는 캠핑 플래너 화면이 호출하는 Express API를 TypeScript로 만든 최종 상태입니다. 한국관광공사 고캠핑 공공 API에서 받은 캠핑장 정보를 PostgreSQL에 저장하고, 캠핑장 목록·상세 조회와 캠핑 계획 조회·추가·수정 API를 제공합니다. 요청 처리는 `src/controllers/`(Controller), `src/services/`(Service), `src/repositories/`(Repository), `src/providers/`(Provider)로 나눴고, 객체를 만들고 연결하는 일은 `src/common/di/container.ts`의 tsyringe 컨테이너가 맡습니다. Express 앱 구성은 `src/app.ts`의 `App` 클래스가, 서버 시작은 `src/main.ts`의 `bootstrap()`이 맡습니다.
 
