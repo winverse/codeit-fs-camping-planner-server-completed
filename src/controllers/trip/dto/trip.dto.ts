@@ -1,12 +1,20 @@
 import { z } from "zod";
-import { TRIP_STATUS_TRANSITIONS, TRIP_STATUSES } from "#constants";
+import {
+  MAX_MEMO_LENGTH,
+  MAX_PEOPLE,
+  MAX_RATING,
+  MIN_PEOPLE,
+  MIN_RATING,
+  TRIP_STATUS_TRANSITIONS,
+  TRIP_STATUSES,
+} from "#constants";
 import type { TripStatus, TripWithCampsite } from "#prisma/models.js";
 
 export const createTripSchema = z
   .object({
     campsiteId: z.number().int().min(1),
-    people: z.number().int().min(1).max(8),
-    memo: z.string().max(200).optional(),
+    people: z.number().int().min(MIN_PEOPLE).max(MAX_PEOPLE),
+    memo: z.string().max(MAX_MEMO_LENGTH).optional(),
   })
   .strict();
 
@@ -20,10 +28,10 @@ export type TripListQuery = z.infer<typeof tripListQuerySchema>;
 
 export const updateTripSchema = z
   .object({
-    people: z.number().int().min(1).max(8).optional(),
-    memo: z.string().max(200).optional(),
+    people: z.number().int().min(MIN_PEOPLE).max(MAX_PEOPLE).optional(),
+    memo: z.string().max(MAX_MEMO_LENGTH).optional(),
     status: z.enum(TRIP_STATUSES).optional(),
-    rating: z.number().int().min(1).max(5).optional(),
+    rating: z.number().int().min(MIN_RATING).max(MAX_RATING).optional(),
   })
   .strict()
   .refine((value) => Object.keys(value).length > 0, {
