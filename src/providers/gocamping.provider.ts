@@ -11,7 +11,7 @@ export class GoCampingProvider {
       MobileOS: "ETC",
       MobileApp: "CampingPlanner",
       _type: "json",
-      numOfRows: "20",
+      numOfRows: "60",
       pageNo: "1",
     });
 
