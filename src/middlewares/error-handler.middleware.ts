@@ -8,10 +8,6 @@ export type ErrorResponse = {
   details?: Record<string, string[]>;
 };
 
-function isBodyParseError(err: unknown): boolean {
-  return err instanceof SyntaxError && "status" in err && err.status === 400;
-}
-
 function isForeignKeyViolation(err: unknown): boolean {
   return err instanceof Error && "sqlState" in err && err.sqlState === "23503";
 }
@@ -29,10 +25,17 @@ export function errorHandler(
     return;
   }
 
-  if (isBodyParseError(err)) {
+  // express.json 같은 미들웨어가 붙인 4xx 오류(JSON 문법 오류는 400, 본문 크기 초과는 413)
+  if (
+    err instanceof Error &&
+    "status" in err &&
+    typeof err.status === "number" &&
+    err.status >= 400 &&
+    err.status < 500
+  ) {
     res
-      .status(HTTP_STATUS.BAD_REQUEST)
-      .json({ success: false, message: ERROR_MESSAGE.VALIDATION_FAILED });
+      .status(err.status)
+      .json({ success: false, message: ERROR_MESSAGE.BAD_REQUEST });
     return;
   }
 
