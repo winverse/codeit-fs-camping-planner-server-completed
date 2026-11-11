@@ -85,12 +85,12 @@ curl http://localhost:4000/api/campsites
 배열로 출력합니다. 배열이 `[]`로 비어 있으면 5단계의 `pnpm campsites:sync`를
 실행했는지 확인합니다.
 
-코드 검사와 포맷은 Biome으로 합니다. `pnpm lint`는 실행한 명령 줄
-`$ biome check` 다음에, 문제가 없으면 `Checked`로 시작해 `No fixes applied.`로
-끝나는 줄을 출력하고, 문제가 있으면 그 아래에 `Found`로 시작하는 개수 줄을
-출력합니다. `pnpm format`은 파일의 포맷을 고쳐 씁니다.
+코드 포맷은 Prettier로 합니다. `pnpm format:check`는 파일을 고치지 않고 검사만
+하며, 문제가 없으면 `All matched files use Prettier code style!`를 출력하고,
+포맷이 다른 파일이 있으면 그 파일을 `[warn]`으로 시작하는 줄에 보여 줍니다.
+`pnpm format`은 그 파일들의 포맷을 고쳐 씁니다.
 
 ```bash
-pnpm lint
+pnpm format:check
 pnpm format
 ```

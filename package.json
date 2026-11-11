@@ -24,8 +24,8 @@
     "prisma:emit": "dotenv -e ./env/.env.development -- prisma contract emit",
     "prisma:init": "dotenv -e ./env/.env.development -- prisma db init",
     "campsites:sync": "pnpm build && node --env-file=./env/.env.development dist/scripts/sync-campsites.js",
-    "lint": "biome check",
-    "format": "biome format --write"
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "keywords": [],
   "author": "",
@@ -44,11 +44,11 @@
     "zod": "^4.6.7"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.6.6",
     "@types/express": "^5.0.6",
     "@types/node": "^26.6.6",
     "dotenv-cli": "^11.1.0",
     "nodemon": "^3.1.14",
+    "prettier": "^3.9.10",
     "prisma": "8.0.0-rc.27",
     "typescript": "^7.0.2"
   }
