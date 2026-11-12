@@ -7,7 +7,7 @@
 ## 제공하는 것
 
 - 제공: 캠핑장 목록·상세 조회(`GET /api/campsites`, `GET /api/campsites/:id`, `?pet=true`로 반려동물 동반 가능 캠핑장만), 캠핑 계획 조회·추가·수정(`GET /api/trips`, `POST /api/trips`, `PATCH /api/trips/:id`), 고캠핑 API 동기화 스크립트, 입력 검증·에러 처리·CORS 미들웨어
-- TypeScript 설정: `src/` 아래 JavaScript 파일을 모두 TypeScript로 옮겼고, `tsconfig.json`의 설정으로 `pnpm build`(`tsc`)가 `src/`를 `dist/`로 빌드합니다. 실행 명령과 `package.json`의 `"imports"` 별칭(`#config` 등)은 빌드 결과인 `dist/`를 가리킵니다.
+- TypeScript 설정: `src/` 아래 JavaScript 파일을 모두 TypeScript로 옮겼고, `tsconfig.json`의 설정으로 `pnpm build`(`tsc`)가 `src/`를 `dist/`로 빌드합니다. `pnpm dev`와 `pnpm campsites:sync`는 tsx로 `src/`의 `.ts` 파일을 바로 실행하고, `pnpm start`는 빌드 결과인 `dist/`를 실행합니다. `package.json`의 `"imports"` 별칭(`#config` 등)은 `production` 조건으로 실행하는 `pnpm start`에서는 `dist/`를, 나머지 명령에서는 `src/`를 가리킵니다.
 - 손대지 않는 파일: `src/prisma/contract.json`·`src/prisma/contract.d.ts`와 `migrations/`는 Prisma가 만드는 파일입니다.
 
 ## 구조
@@ -50,7 +50,7 @@ pnpm prisma:init
 다시 만듭니다.
 
 5. 고캠핑 API에서 캠핑장 정보를 받아 데이터베이스에 저장합니다. 이 명령은
-   먼저 `pnpm build`로 `dist/`를 만든 뒤 동기화 스크립트를 실행합니다. 이 단계를
+   tsx로 `src/scripts/sync-campsites.ts`를 실행합니다. 이 단계를
    건너뛰면 캠핑장 테이블이 비어 있어 목록 API와 화면의 캠핑장 목록이 비어
    있습니다.
 
@@ -60,8 +60,8 @@ pnpm campsites:sync
 
 터미널 마지막 줄에 `저장한 캠핑장 60개`가 보이면 저장이 끝난 것입니다.
 
-6. 개발 서버를 실행합니다. `pnpm dev`는 `src/`를 `dist/`로 빌드한 뒤
-   `dist/main.js`를 실행하고, `src/`의 `.ts` 파일이 바뀌면 다시 빌드해 재시작합니다.
+6. 개발 서버를 실행합니다. `pnpm dev`는 tsx로 `src/main.ts`를 실행하고,
+   이 파일이나 이 파일이 import하는 파일이 바뀌면 서버를 다시 시작합니다.
 
 ```bash
 pnpm dev
