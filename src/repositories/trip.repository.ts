@@ -43,7 +43,8 @@ export class TripRepository {
     return this.#db.orm.public.Trip.create(data);
   }
 
-  async update(id: number, data: TripUpdateData) {
-    return this.#db.orm.public.Trip.where({ id }).update(data);
+  // 상태 조건까지 UPDATE 문 하나에 넣으므로, 읽은 뒤 다른 요청이 상태를 바꿨다면 0을 돌려줍니다
+  async update(id: number, status: TripStatus, data: TripUpdateData) {
+    return this.#db.orm.public.Trip.where({ id, status }).updateAndCount(data);
   }
 }

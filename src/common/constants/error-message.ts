@@ -5,5 +5,7 @@ export const ERROR_MESSAGE = {
   TRIP_NOT_FOUND: '캠핑 계획을 찾을 수 없습니다.',
   TRIP_STATUS_CHANGE_NOT_ALLOWED: '허용되지 않은 상태 변경입니다.',
   TRIP_RATING_NOT_ALLOWED: '별점은 다녀온 계획에만 남길 수 있습니다.',
+  TRIP_UPDATE_CONFLICT:
+    '다른 요청이 먼저 캠핑 계획을 바꿨습니다. 다시 시도해 주세요.',
   INTERNAL_SERVER_ERROR: '서버 내부 오류가 발생했습니다.',
 };

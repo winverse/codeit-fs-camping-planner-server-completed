@@ -43,7 +43,10 @@ export class TripService {
       throw new ConflictException(ERROR_MESSAGE.TRIP_RATING_NOT_ALLOWED);
     }
 
-    await this.#tripRepository.update(id, data);
+    const count = await this.#tripRepository.update(id, trip.status, data);
+    if (count === 0) {
+      throw new ConflictException(ERROR_MESSAGE.TRIP_UPDATE_CONFLICT);
+    }
     return this.getTrip(id);
   }
 }
