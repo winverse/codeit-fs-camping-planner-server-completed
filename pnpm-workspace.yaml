@@ -6,3 +6,5 @@ permissions:
     skills: false
   prisma:
     skills: false
+  tsdown:
+    skills: false

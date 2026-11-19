@@ -4,55 +4,23 @@
   "description": "",
   "type": "module",
   "imports": {
-    "#config": {
-      "production": "./dist/config/config.js",
-      "default": "./src/config/config.js"
-    },
-    "#prisma/*": {
-      "production": "./dist/prisma/*",
-      "default": "./src/prisma/*"
-    },
-    "#repositories": {
-      "production": "./dist/repositories/index.js",
-      "default": "./src/repositories/index.js"
-    },
-    "#constants": {
-      "production": "./dist/common/constants/index.js",
-      "default": "./src/common/constants/index.js"
-    },
-    "#exceptions": {
-      "production": "./dist/common/exceptions/index.js",
-      "default": "./src/common/exceptions/index.js"
-    },
-    "#schemas": {
-      "production": "./dist/common/schemas/index.js",
-      "default": "./src/common/schemas/index.js"
-    },
-    "#mappers": {
-      "production": "./dist/common/mappers/index.js",
-      "default": "./src/common/mappers/index.js"
-    },
-    "#controllers": {
-      "production": "./dist/controllers/index.js",
-      "default": "./src/controllers/index.js"
-    },
-    "#services": {
-      "production": "./dist/services/index.js",
-      "default": "./src/services/index.js"
-    },
-    "#middlewares": {
-      "production": "./dist/middlewares/index.js",
-      "default": "./src/middlewares/index.js"
-    },
-    "#providers": {
-      "production": "./dist/providers/index.js",
-      "default": "./src/providers/index.js"
-    }
+    "#config": "./src/config/config.js",
+    "#prisma/*": "./src/prisma/*",
+    "#repositories": "./src/repositories/index.js",
+    "#constants": "./src/common/constants/index.js",
+    "#exceptions": "./src/common/exceptions/index.js",
+    "#schemas": "./src/common/schemas/index.js",
+    "#mappers": "./src/common/mappers/index.js",
+    "#controllers": "./src/controllers/index.js",
+    "#services": "./src/services/index.js",
+    "#middlewares": "./src/middlewares/index.js",
+    "#providers": "./src/providers/index.js"
   },
   "scripts": {
-    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "build": "tsdown src/main.ts",
     "dev": "tsx watch --env-file=./env/.env.development src/main.ts",
-    "start": "node --conditions=production --env-file=./env/.env.development dist/main.js",
+    "start": "node --env-file=./env/.env.development dist/main.mjs",
     "prisma:emit": "dotenv -e ./env/.env.development -- prisma contract emit",
     "prisma:init": "dotenv -e ./env/.env.development -- prisma db init",
     "campsites:sync": "tsx --env-file=./env/.env.development src/scripts/sync-campsites.ts",
@@ -81,6 +49,7 @@
     "dotenv-cli": "^11.1.0",
     "prettier": "^3.10.1",
     "prisma": "8.0.0-rc.34",
+    "tsdown": "0.23.7",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   }

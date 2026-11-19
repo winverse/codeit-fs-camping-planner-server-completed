@@ -7,7 +7,7 @@
 ## 제공하는 것
 
 - 제공: 캠핑장 목록·상세 조회(`GET /api/campsites`, `GET /api/campsites/:id`, `?pet=true`로 반려동물 동반 가능 캠핑장만), 캠핑 계획 조회·추가·수정(`GET /api/trips`, `POST /api/trips`, `PATCH /api/trips/:id`), 고캠핑 API 동기화 스크립트, 입력 검증·에러 처리·CORS 미들웨어
-- TypeScript 설정: `src/` 아래 JavaScript 파일을 모두 TypeScript로 옮겼고, `tsconfig.json`의 설정으로 `pnpm build`(`tsc`)가 `src/`를 `dist/`로 빌드합니다. `pnpm dev`와 `pnpm campsites:sync`는 tsx로 `src/`의 `.ts` 파일을 바로 실행하고, `pnpm start`는 빌드 결과인 `dist/`를 실행합니다. `package.json`의 `"imports"` 별칭(`#config` 등)은 `production` 조건으로 실행하는 `pnpm start`에서는 `dist/`를, 나머지 명령에서는 `src/`를 가리킵니다.
+- TypeScript 설정: `src/` 아래 JavaScript 파일을 모두 TypeScript로 옮겼습니다. 타입 검사는 `pnpm typecheck`(`tsc --noEmit`)가 `tsconfig.json`의 설정으로 하고, 빌드는 `pnpm build`(`tsdown`)가 `src/main.ts`와 그 파일이 가져오는 파일을 `dist/main.mjs` 한 파일로 묶습니다. `pnpm dev`와 `pnpm campsites:sync`는 tsx로 `src/`의 `.ts` 파일을 바로 실행하고, `pnpm start`는 빌드 결과인 `dist/main.mjs`를 실행합니다. tsx와 tsdown은 타입을 검사하지 않습니다. `package.json`의 `"imports"` 별칭(`#config` 등)은 `src/`를 가리키고, tsdown은 빌드할 때 별칭을 풀어 파일을 묶습니다.
 - 손대지 않는 파일: `src/prisma/contract.json`·`src/prisma/contract.d.ts`와 `migrations/`는 Prisma가 만드는 파일입니다.
 
 ## 구조

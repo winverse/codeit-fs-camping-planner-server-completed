@@ -11,10 +11,7 @@
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
-    "skipLibCheck": true,
-    "noEmitOnError": true,
-    "rootDir": "./src",
-    "outDir": "./dist"
+    "skipLibCheck": true
   },
   "include": ["src"]
 }
