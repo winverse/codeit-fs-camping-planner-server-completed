@@ -1,6 +1,6 @@
 import { config } from '#config';
 import { App } from './app.js';
-import { createContainer } from './common/di/container.js';
+import { createContainer } from '#di';
 
 async function bootstrap() {
   const { controller } = createContainer();

@@ -1,5 +1,5 @@
 import type { CampsiteData } from '#prisma/models.js';
-import type { Cradle } from '../common/di/container.js';
+import type { Cradle } from '#di';
 
 export class CampsiteRepository {
   #db: Cradle['db'];

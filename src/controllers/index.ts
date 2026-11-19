@@ -1,5 +1,5 @@
 import { HTTP_STATUS } from '#constants';
-import type { Cradle } from '../common/di/container.js';
+import type { Cradle } from '#di';
 import { BaseController } from './base.controller.js';
 
 export * from './base.controller.js';

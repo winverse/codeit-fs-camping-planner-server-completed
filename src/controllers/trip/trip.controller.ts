@@ -3,7 +3,7 @@ import { HTTP_STATUS } from '#constants';
 import { getValidated, validate } from '#middlewares';
 import type { IdParams } from '#schemas';
 import { idParamSchema } from '#schemas';
-import type { Cradle } from '../../common/di/container.js';
+import type { Cradle } from '#di';
 import { BaseController } from '../base.controller.js';
 import type {
   CreateTripInput,

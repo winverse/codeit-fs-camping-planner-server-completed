@@ -1,7 +1,7 @@
 import { ERROR_MESSAGE } from '#constants';
 import { NotFoundException } from '#exceptions';
 import { toCampsiteData } from '#mappers';
-import type { Cradle } from '../common/di/container.js';
+import type { Cradle } from '#di';
 
 export class CampsiteService {
   #goCampingProvider: Cradle['goCampingProvider'];

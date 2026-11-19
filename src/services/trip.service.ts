@@ -2,7 +2,7 @@ import type { TripStatus } from '#constants';
 import { ERROR_MESSAGE, TRIP_STATUS_TRANSITIONS } from '#constants';
 import { ConflictException, NotFoundException } from '#exceptions';
 import type { TripCreateData, TripUpdateData } from '#repositories';
-import type { Cradle } from '../common/di/container.js';
+import type { Cradle } from '#di';
 
 export class TripService {
   #tripRepository: Cradle['tripRepository'];

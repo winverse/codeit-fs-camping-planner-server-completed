@@ -1,5 +1,5 @@
 import type { TripStatus } from '#constants';
-import type { Cradle } from '../common/di/container.js';
+import type { Cradle } from '#di';
 
 export interface TripCreateData {
   campsiteId: number;

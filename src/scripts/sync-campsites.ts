@@ -1,4 +1,4 @@
-import { createContainer } from '../common/di/container.js';
+import { createContainer } from '#di';
 
 const { campsiteService, db } = createContainer();
 

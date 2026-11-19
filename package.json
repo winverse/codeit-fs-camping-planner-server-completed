@@ -11,6 +11,7 @@
     "#exceptions": "./src/common/exceptions/index.js",
     "#schemas": "./src/common/schemas/index.js",
     "#mappers": "./src/common/mappers/index.js",
+    "#di": "./src/common/di/container.js",
     "#controllers": "./src/controllers/index.js",
     "#services": "./src/services/index.js",
     "#middlewares": "./src/middlewares/index.js",
