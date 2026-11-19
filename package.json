@@ -50,7 +50,7 @@
     "dotenv-cli": "^11.1.0",
     "prettier": "^3.10.1",
     "prisma": "8.0.0-rc.34",
-    "tsdown": "0.23.7",
+    "tsdown": "^0.23.7",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   }
