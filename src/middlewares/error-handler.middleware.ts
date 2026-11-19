@@ -2,6 +2,12 @@ import type { NextFunction, Request, Response } from 'express';
 import { ERROR_MESSAGE, HTTP_STATUS } from '#constants';
 import { HttpException } from '#exceptions';
 
+function hasStatus(err: unknown): err is Error & { status: number } {
+  return (
+    err instanceof Error && 'status' in err && typeof err.status === 'number'
+  );
+}
+
 export const errorHandler = (
   err: unknown,
   req: Request,
@@ -17,13 +23,7 @@ export const errorHandler = (
   }
 
   // express.json 같은 미들웨어가 붙인 4xx 오류(JSON 문법 오류는 400, 본문 크기 초과는 413)
-  if (
-    err instanceof Error &&
-    'status' in err &&
-    typeof err.status === 'number' &&
-    err.status >= 400 &&
-    err.status < 500
-  ) {
+  if (hasStatus(err) && err.status >= 400 && err.status < 500) {
     return res.status(err.status).json({
       success: false,
       message: ERROR_MESSAGE.BAD_REQUEST,
