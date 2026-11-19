@@ -3,7 +3,7 @@ import { HTTP_STATUS } from '#constants';
 import { getValidated, validate } from '#middlewares';
 import type { IdParams } from '#schemas';
 import { idParamSchema } from '#schemas';
-import type { Cradle } from '#di';
+import type { TripService } from '#services';
 import { BaseController } from '../base.controller.js';
 import type {
   CreateTripInput,
@@ -18,9 +18,9 @@ import {
 } from './dto/index.js';
 
 export class TripController extends BaseController {
-  #tripService: Cradle['tripService'];
+  #tripService: TripService;
 
-  constructor({ tripService }: Pick<Cradle, 'tripService'>) {
+  constructor({ tripService }: { tripService: TripService }) {
     super();
     this.#tripService = tripService;
   }

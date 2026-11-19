@@ -1,5 +1,5 @@
 import type { TripStatus } from '#constants';
-import type { Cradle } from '#di';
+import type { Db } from '#prisma/db.js';
 
 export interface TripCreateData {
   campsiteId: number;
@@ -15,9 +15,9 @@ export interface TripUpdateData {
 }
 
 export class TripRepository {
-  #db: Cradle['db'];
+  #db: Db;
 
-  constructor({ db }: Pick<Cradle, 'db'>) {
+  constructor({ db }: { db: Db }) {
     this.#db = db;
   }
 

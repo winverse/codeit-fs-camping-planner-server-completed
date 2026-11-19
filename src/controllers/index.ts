@@ -1,19 +1,23 @@
 import { HTTP_STATUS } from '#constants';
-import type { Cradle } from '#di';
 import { BaseController } from './base.controller.js';
+import type { CampsiteController } from './campsite/index.js';
+import type { TripController } from './trip/index.js';
 
 export * from './base.controller.js';
 export * from './campsite/index.js';
 export * from './trip/index.js';
 
 export class Controller extends BaseController {
-  #campsiteController: Cradle['campsiteController'];
-  #tripController: Cradle['tripController'];
+  #campsiteController: CampsiteController;
+  #tripController: TripController;
 
   constructor({
     campsiteController,
     tripController,
-  }: Pick<Cradle, 'campsiteController' | 'tripController'>) {
+  }: {
+    campsiteController: CampsiteController;
+    tripController: TripController;
+  }) {
     super();
     this.#campsiteController = campsiteController;
     this.#tripController = tripController;

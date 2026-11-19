@@ -10,3 +10,5 @@ export const db = postgres({
   contract,
   url: config.DATABASE_URL,
 });
+
+export type Db = typeof db;

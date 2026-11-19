@@ -1,16 +1,20 @@
 import { ERROR_MESSAGE } from '#constants';
 import { NotFoundException } from '#exceptions';
 import { toCampsiteData } from '#mappers';
-import type { Cradle } from '#di';
+import type { GoCampingProvider } from '#providers';
+import type { CampsiteRepository } from '#repositories';
 
 export class CampsiteService {
-  #goCampingProvider: Cradle['goCampingProvider'];
-  #campsiteRepository: Cradle['campsiteRepository'];
+  #goCampingProvider: GoCampingProvider;
+  #campsiteRepository: CampsiteRepository;
 
   constructor({
     goCampingProvider,
     campsiteRepository,
-  }: Pick<Cradle, 'goCampingProvider' | 'campsiteRepository'>) {
+  }: {
+    goCampingProvider: GoCampingProvider;
+    campsiteRepository: CampsiteRepository;
+  }) {
     this.#goCampingProvider = goCampingProvider;
     this.#campsiteRepository = campsiteRepository;
   }

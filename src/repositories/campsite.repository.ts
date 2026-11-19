@@ -1,10 +1,10 @@
 import type { CampsiteData } from '#prisma/models.js';
-import type { Cradle } from '#di';
+import type { Db } from '#prisma/db.js';
 
 export class CampsiteRepository {
-  #db: Cradle['db'];
+  #db: Db;
 
-  constructor({ db }: Pick<Cradle, 'db'>) {
+  constructor({ db }: { db: Db }) {
     this.#db = db;
   }
 

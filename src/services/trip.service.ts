@@ -1,13 +1,16 @@
 import type { TripStatus } from '#constants';
 import { ERROR_MESSAGE, TRIP_STATUS_TRANSITIONS } from '#constants';
 import { ConflictException, NotFoundException } from '#exceptions';
-import type { TripCreateData, TripUpdateData } from '#repositories';
-import type { Cradle } from '#di';
+import type {
+  TripCreateData,
+  TripRepository,
+  TripUpdateData,
+} from '#repositories';
 
 export class TripService {
-  #tripRepository: Cradle['tripRepository'];
+  #tripRepository: TripRepository;
 
-  constructor({ tripRepository }: Pick<Cradle, 'tripRepository'>) {
+  constructor({ tripRepository }: { tripRepository: TripRepository }) {
     this.#tripRepository = tripRepository;
   }
 
