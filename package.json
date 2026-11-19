@@ -66,13 +66,13 @@
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "^11.3.0",
+      "version": "^12.21.0",
       "onFail": "download"
     }
   },
   "dependencies": {
-    "@prisma/orm-postgres": "8.0.0-rc.20",
-    "awilix": "^13.0.5",
+    "@prisma/orm-postgres": "8.0.0-rc.24",
+    "awilix": "^13.0.7",
     "express": "^5.3.0",
     "zod": "^4.6.7"
   },
@@ -80,8 +80,8 @@
     "@types/express": "^5.0.6",
     "@types/node": "^26.6.6",
     "dotenv-cli": "^11.1.0",
-    "prettier": "^3.9.10",
-    "prisma": "8.0.0-rc.27",
+    "prettier": "^3.10.1",
+    "prisma": "8.0.0-rc.34",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   }
