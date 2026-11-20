@@ -1,11 +1,8 @@
 import type { TripStatus } from '#constants';
 import { ERROR_MESSAGE, TRIP_STATUS_TRANSITIONS } from '#constants';
 import { ConflictException, NotFoundException } from '#exceptions';
-import type {
-  TripCreateData,
-  TripRepository,
-  TripUpdateData,
-} from '#repositories';
+import type { TripCreateData, TripUpdateData } from '#prisma/db.interface.js';
+import type { TripRepository } from '#repositories';
 
 export class TripService {
   #tripRepository: TripRepository;

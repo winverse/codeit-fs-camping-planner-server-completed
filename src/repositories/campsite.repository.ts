@@ -1,5 +1,4 @@
-import type { CampsiteData } from '#prisma/db.interface.js';
-import type { Db } from '#prisma/db.js';
+import type { CampsiteData, Db } from '#prisma/db.interface.js';
 
 export class CampsiteRepository {
   #db: Db;

@@ -2,8 +2,7 @@ import type { NextFunction, Request, Response } from 'express';
 import { z } from 'zod';
 import { ERROR_MESSAGE } from '#constants';
 import { BadRequestException } from '#exceptions';
-
-type ValidationTarget = 'body' | 'query' | 'params';
+import type { ValidationTarget } from './validation.middleware.interface.js';
 
 /**
  * 범용 검증 미들웨어

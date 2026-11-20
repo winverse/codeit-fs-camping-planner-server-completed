@@ -17,9 +17,10 @@
 - `src/repositories/`: Prisma 쿼리를 감추는 `CampsiteRepository`·`TripRepository`
 - `src/providers/`: 고캠핑 API 호출을 감싼 `GoCampingProvider`
 - `src/middlewares/`: CORS·입력 검증·에러 처리 미들웨어
-- `src/common/`: 상수·예외, 고캠핑 응답 스키마와 변환 함수, awilix 컨테이너(`di/container.ts`)
-- `src/config/`, `src/prisma/`: 환경 변수 검증, Prisma 8 계약(`contract.prisma`)·emit 결과물·데이터베이스 연결 파일(`db.ts`)·행 타입(`db.interface.ts`)
+- `src/common/`: 상수·예외, 고캠핑 응답 스키마와 변환 함수, awilix 컨테이너(`di/container.ts`)와 컨테이너에 등록한 객체의 타입(`di/container.interface.ts`)
+- `src/config/`, `src/prisma/`: 환경 변수 검증, Prisma 8 계약(`contract.prisma`)·emit 결과물·데이터베이스 연결 파일(`db.ts`)·행 타입과 `Db`·캠핑 계획 입력 타입(`db.interface.ts`)
 - `src/scripts/sync-campsites.ts`: 고캠핑 API의 캠핑장을 데이터베이스에 저장하는 동기화 스크립트
+- 타입만 담은 파일은 그 타입을 쓰거나 뽑아 온 파일 옆에 `<파일 이름>.interface.ts`로 둡니다(`constants/trip.interface.ts`, `schemas/*.schema.interface.ts`, `dto/*.dto.interface.ts`, `validation.middleware.interface.ts` 등).
 
 ## 시작하기
 

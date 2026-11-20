@@ -1,6 +1,6 @@
-export const TRIP_STATUSES = ['wish', 'booked', 'done', 'canceled'] as const;
+import type { TripStatus } from './trip.interface.js';
 
-export type TripStatus = (typeof TRIP_STATUSES)[number];
+export const TRIP_STATUSES = ['wish', 'booked', 'done', 'canceled'] as const;
 
 // 상태마다 다음으로 바꿀 수 있는 상태 목록입니다
 export const TRIP_STATUS_TRANSITIONS: Record<TripStatus, TripStatus[]> = {

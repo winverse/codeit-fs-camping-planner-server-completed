@@ -18,13 +18,9 @@ export const createTripSchema = z
   })
   .strict();
 
-export type CreateTripInput = z.infer<typeof createTripSchema>;
-
 export const tripListQuerySchema = z.object({
   status: z.enum(TRIP_STATUSES).optional(),
 });
-
-export type TripListQuery = z.infer<typeof tripListQuerySchema>;
 
 export const updateTripSchema = z
   .object({
@@ -37,8 +33,6 @@ export const updateTripSchema = z
   .refine((value) => Object.keys(value).length > 0, {
     message: '변경할 값을 하나 이상 보내야 합니다.',
   });
-
-export type UpdateTripInput = z.infer<typeof updateTripSchema>;
 
 export function toTripResponse(trip: TripWithCampsite) {
   if (trip.campsite === null) {

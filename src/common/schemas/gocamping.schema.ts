@@ -22,5 +22,3 @@ export const goCampingResponseSchema = z.object({
     }),
   }),
 });
-
-export type GoCampingItem = z.infer<typeof goCampingItemSchema>;

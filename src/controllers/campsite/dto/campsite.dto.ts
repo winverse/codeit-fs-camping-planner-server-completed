@@ -26,5 +26,3 @@ export const campsiteListQuerySchema = z.object({
     .transform((value) => value === 'true')
     .optional(),
 });
-
-export type CampsiteListQuery = z.infer<typeof campsiteListQuerySchema>;
