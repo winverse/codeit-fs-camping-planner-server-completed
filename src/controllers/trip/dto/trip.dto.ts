@@ -8,7 +8,7 @@ import {
   TRIP_STATUS_TRANSITIONS,
   TRIP_STATUSES,
 } from '#constants';
-import type { TripWithCampsite } from '#prisma/models.js';
+import type { TripWithCampsite } from '#prisma/db.interface.js';
 
 export const createTripSchema = z
   .object({

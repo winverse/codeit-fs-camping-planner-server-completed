@@ -18,7 +18,7 @@
 - `src/providers/`: 고캠핑 API 호출을 감싼 `GoCampingProvider`
 - `src/middlewares/`: CORS·입력 검증·에러 처리 미들웨어
 - `src/common/`: 상수·예외, 고캠핑 응답 스키마와 변환 함수, awilix 컨테이너(`di/container.ts`)
-- `src/config/`, `src/prisma/`: 환경 변수 검증, Prisma 8 계약(`contract.prisma`)·emit 결과물·데이터베이스 연결 파일(`db.ts`)·행 타입(`models.ts`)
+- `src/config/`, `src/prisma/`: 환경 변수 검증, Prisma 8 계약(`contract.prisma`)·emit 결과물·데이터베이스 연결 파일(`db.ts`)·행 타입(`db.interface.ts`)
 - `src/scripts/sync-campsites.ts`: 고캠핑 API의 캠핑장을 데이터베이스에 저장하는 동기화 스크립트
 
 ## 시작하기
