@@ -1,5 +1,4 @@
-import type { TripStatus } from '#constants';
-import type { TripCreateData, TripUpdateData } from '#interface';
+import type { TripCreateData, TripStatus, TripUpdateData } from '#interface';
 import type { Db } from '#prisma/db.interface.js';
 
 export class TripRepository {

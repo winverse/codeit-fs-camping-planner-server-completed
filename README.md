@@ -19,9 +19,9 @@
 - `src/middlewares/`: CORS·입력 검증·에러 처리 미들웨어
 - `src/common/`: 상수·예외, 고캠핑 응답 스키마와 변환 함수, awilix 컨테이너(`di/container.ts`)와 컨테이너에 등록한 객체의 타입(`di/container.interface.ts`)
 - `src/config/`, `src/prisma/`: 환경 변수 검증, Prisma 8 계약(`contract.prisma`)·emit 결과물·데이터베이스 연결 파일(`db.ts`)·행 타입과 `Db`(`db.interface.ts`)
-- `src/interface/`: 리포지토리와 서비스가 함께 쓰는 캠핑 계획 입력 타입(`trip.interface.ts`)
+- `src/interface/`: 캠핑 계획 상태 타입 `TripStatus`와 리포지토리·서비스가 함께 쓰는 캠핑 계획 입력 타입(`trip.interface.ts`)
 - `src/scripts/sync-campsites.ts`: 고캠핑 API의 캠핑장을 데이터베이스에 저장하는 동기화 스크립트
-- 타입만 담은 파일은 그 타입을 쓰거나 뽑아 온 파일 옆에 `<파일 이름>.interface.ts`로 둡니다(`constants/trip.interface.ts`, `schemas/*.schema.interface.ts`, `dto/*.dto.interface.ts`, `validation.middleware.interface.ts` 등). 옆에 둘 파일 없이 여러 계층이 함께 쓰는 한 도메인의 타입은 `src/interface/<도메인>.interface.ts`에 둡니다.
+- 타입만 담은 파일은 그 타입을 쓰거나 뽑아 온 파일 옆에 `<파일 이름>.interface.ts`로 둡니다(`schemas/*.schema.interface.ts`, `dto/*.dto.interface.ts`, `validation.middleware.interface.ts` 등). 상수 폴더 `common/constants`에는 값만 둡니다. 상수에서 뽑은 타입(`TripStatus`)과, 옆에 둘 파일 없이 여러 계층이 함께 쓰는 한 도메인의 타입은 `src/interface/<도메인>.interface.ts`에 둡니다.
 
 ## 시작하기
 

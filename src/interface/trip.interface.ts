@@ -1,4 +1,6 @@
-import type { TripStatus } from '#constants';
+import type { TRIP_STATUSES } from '#constants';
+
+export type TripStatus = (typeof TRIP_STATUSES)[number];
 
 export interface TripCreateData {
   campsiteId: number;
