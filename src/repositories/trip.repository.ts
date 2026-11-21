@@ -1,4 +1,4 @@
-import type { TripCreateData, TripStatus, TripUpdateData } from '#interface';
+import type { CreateTripData, TripStatus, UpdateTripData } from '#interface';
 import type { Db } from '#prisma/db.js';
 
 export class TripRepository {
@@ -26,12 +26,12 @@ export class TripRepository {
     return this.#withCampsite().where({ id }).first();
   }
 
-  async create(data: TripCreateData) {
+  async create(data: CreateTripData) {
     return this.#db.orm.public.Trip.create(data);
   }
 
   // 상태 조건까지 UPDATE 문 하나에 넣으므로, 읽은 뒤 다른 요청이 상태를 바꿨다면 0을 돌려줍니다
-  async update(id: number, status: TripStatus, data: TripUpdateData) {
+  async update(id: number, status: TripStatus, data: UpdateTripData) {
     return this.#db.orm.public.Trip.where({ id, status }).updateAndCount(data);
   }
 }

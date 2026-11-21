@@ -16,9 +16,11 @@ export const validate = (target: ValidationTarget, schema: z.ZodType) => {
       const result = schema.safeParse(req[target]);
 
       if (!result.success) {
+        // refine처럼 객체 전체에 건 검사의 메시지는 fieldErrors가 아니라 formErrors에 담기므로, 그 첫 메시지를 응답 메시지로 씁니다.
+        const { formErrors, fieldErrors } = z.flattenError(result.error);
         throw new BadRequestException(
-          ERROR_MESSAGE.VALIDATION_FAILED,
-          z.flattenError(result.error).fieldErrors,
+          formErrors[0] ?? ERROR_MESSAGE.VALIDATION_FAILED,
+          fieldErrors,
         );
       }
 

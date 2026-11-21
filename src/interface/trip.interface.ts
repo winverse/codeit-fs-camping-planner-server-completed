@@ -9,13 +9,13 @@ export type TripWithCampsite = TripRow & {
 
 export type TripStatus = (typeof TRIP_STATUSES)[number];
 
-export interface TripCreateData {
+export interface CreateTripData {
   campsiteId: number;
   people: number;
   memo?: string;
 }
 
-export interface TripUpdateData {
+export interface UpdateTripData {
   people?: number;
   memo?: string;
   status?: TripStatus;

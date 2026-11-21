@@ -1,6 +1,6 @@
 import { ERROR_MESSAGE, TRIP_STATUS_TRANSITIONS } from '#constants';
 import { ConflictException, NotFoundException } from '#exceptions';
-import type { TripCreateData, TripStatus, TripUpdateData } from '#interface';
+import type { CreateTripData, TripStatus, UpdateTripData } from '#interface';
 import type { TripRepository } from '#repositories';
 
 export class TripService {
@@ -22,12 +22,12 @@ export class TripService {
     return trip;
   }
 
-  async createTrip(data: TripCreateData) {
+  async createTrip(data: CreateTripData) {
     const trip = await this.#tripRepository.create(data);
     return this.getTrip(trip.id);
   }
 
-  async updateTrip(id: number, data: TripUpdateData) {
+  async updateTrip(id: number, data: UpdateTripData) {
     const trip = await this.getTrip(id);
 
     if (
