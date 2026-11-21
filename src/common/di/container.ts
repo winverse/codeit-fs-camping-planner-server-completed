@@ -1,3 +1,4 @@
+import type { Resolver } from 'awilix';
 import {
   asClass,
   asValue,
@@ -47,7 +48,7 @@ export const createContainer = () => {
     controller: asClass(Controller, {
       lifetime: Lifetime.SINGLETON,
     }),
-  });
+  } satisfies { [K in keyof Cradle]: Resolver<Cradle[K]> });
 
   return container.cradle;
 };
