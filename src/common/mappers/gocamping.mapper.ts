@@ -1,4 +1,4 @@
-import type { CampsiteData, GoCampingItem } from '#interface';
+import type { CampsiteData, GoCampingItem } from '#interfaces';
 
 // 고캠핑 API 응답 항목 하나를 Campsite 테이블에 저장할 값으로 바꿉니다
 export function toCampsiteData(item: GoCampingItem): CampsiteData {

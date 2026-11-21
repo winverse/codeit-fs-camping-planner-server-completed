@@ -8,7 +8,7 @@ import {
   TRIP_STATUS_TRANSITIONS,
   TRIP_STATUSES,
 } from '#constants';
-import type { TripWithCampsite } from '#interface';
+import type { TripWithCampsite } from '#interfaces';
 
 export const createTripSchema = z
   .object({

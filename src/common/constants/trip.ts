@@ -1,4 +1,4 @@
-import type { TripStatus } from '#interface';
+import type { TripStatus } from '#interfaces';
 
 export const TRIP_STATUSES = ['wish', 'booked', 'done', 'canceled'] as const;
 

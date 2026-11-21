@@ -1,4 +1,4 @@
-import type { CreateTripData, TripStatus, UpdateTripData } from '#interface';
+import type { CreateTripData, TripStatus, UpdateTripData } from '#interfaces';
 import type { Db } from '#prisma/db.js';
 
 export class TripRepository {

@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import type { CampsiteRow } from '#interface';
+import type { CampsiteRow } from '#interfaces';
 
 const INDUSTRIES = ['일반야영장', '자동차야영장', '글램핑', '카라반'];
 

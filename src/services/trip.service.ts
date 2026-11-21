@@ -1,6 +1,6 @@
 import { ERROR_MESSAGE, TRIP_STATUS_TRANSITIONS } from '#constants';
 import { ConflictException, NotFoundException } from '#exceptions';
-import type { CreateTripData, TripStatus, UpdateTripData } from '#interface';
+import type { CreateTripData, TripStatus, UpdateTripData } from '#interfaces';
 import type { TripRepository } from '#repositories';
 
 export class TripService {
