@@ -1,4 +1,3 @@
-import type { TripStatus } from '#constants';
 import type { Models } from './contract.js';
 import type { db } from './db.js';
 
@@ -11,16 +10,3 @@ export type TripWithCampsite = TripRow & {
 };
 
 export type Db = typeof db;
-
-export interface TripCreateData {
-  campsiteId: number;
-  people: number;
-  memo?: string;
-}
-
-export interface TripUpdateData {
-  people?: number;
-  memo?: string;
-  status?: TripStatus;
-  rating?: number;
-}
