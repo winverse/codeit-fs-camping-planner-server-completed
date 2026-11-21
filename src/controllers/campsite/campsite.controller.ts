@@ -1,7 +1,7 @@
 import type { Request, Response } from 'express';
+import type { IdParams } from '#common/interfaces';
 import { HTTP_STATUS } from '#constants';
 import { getValidated, validate } from '#middlewares';
-import type { IdParams } from '#schemas';
 import { idParamSchema } from '#schemas';
 import type { CampsiteService } from '#services';
 import { BaseController } from '../base.controller.js';

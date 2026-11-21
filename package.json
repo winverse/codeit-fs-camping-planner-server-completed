@@ -16,7 +16,8 @@
     "#services": "./src/services/index.js",
     "#middlewares": "./src/middlewares/index.js",
     "#providers": "./src/providers/index.js",
-    "#interface": "./src/interface/index.js"
+    "#interface": "./src/interface/index.js",
+    "#common/interfaces": "./src/common/interfaces/index.js"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
