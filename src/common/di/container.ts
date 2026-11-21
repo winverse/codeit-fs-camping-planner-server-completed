@@ -7,11 +7,23 @@ import {
   Lifetime,
 } from 'awilix';
 import { CampsiteController, Controller, TripController } from '#controllers';
+import type { Db } from '#prisma/db.js';
 import { db } from '#prisma/db.js';
 import { GoCampingProvider } from '#providers';
 import { CampsiteRepository, TripRepository } from '#repositories';
 import { CampsiteService, TripService } from '#services';
-import type { Cradle } from './container.interface.js';
+
+interface Cradle {
+  db: Db;
+  goCampingProvider: GoCampingProvider;
+  campsiteRepository: CampsiteRepository;
+  tripRepository: TripRepository;
+  campsiteService: CampsiteService;
+  tripService: TripService;
+  campsiteController: CampsiteController;
+  tripController: TripController;
+  controller: Controller;
+}
 
 export const createContainer = () => {
   const container = createAwilixContainer<Cradle>({

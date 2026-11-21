@@ -17,11 +17,11 @@
 - `src/repositories/`: Prisma 쿼리를 감추는 `CampsiteRepository`·`TripRepository`
 - `src/providers/`: 고캠핑 API 호출을 감싼 `GoCampingProvider`
 - `src/middlewares/`: CORS·입력 검증·에러 처리 미들웨어
-- `src/common/`: 상수·예외, 고캠핑 응답 스키마와 변환 함수, 여러 도메인이 함께 쓰는 타입(`interfaces/request.interface.ts`), awilix 컨테이너(`di/container.ts`)와 컨테이너에 등록한 객체의 타입(`di/container.interface.ts`)
+- `src/common/`: 상수·예외, 고캠핑 응답 스키마와 변환 함수, 여러 도메인이 함께 쓰는 타입(`interfaces/request.interface.ts`), awilix 컨테이너와 컨테이너에 등록한 객체의 타입 `Cradle`(`di/container.ts`)
 - `src/config/`, `src/prisma/`: 환경 변수 검증, Prisma 8 계약(`contract.prisma`)·emit 결과물, 데이터베이스 연결 객체 `db`와 그 타입 `Db`(`db.ts`)
 - `src/interfaces/`: 한 도메인에 묶인 타입. 캠핑장 행 타입과 고캠핑 응답 항목 타입 `GoCampingItem`(`campsite.interface.ts`), 캠핑 계획 행 타입·상태 타입 `TripStatus`와 리포지토리·서비스가 함께 쓰는 캠핑 계획 입력 타입(`trip.interface.ts`)
 - `src/scripts/sync-campsites.ts`: 고캠핑 API의 캠핑장을 데이터베이스에 저장하는 동기화 스크립트
-- 타입만 담은 파일은 그 타입을 쓰거나 뽑아 온 파일 옆에 `<파일 이름>.interface.ts`로 둡니다(`dto/*.dto.interface.ts`, `di/container.interface.ts` 등). `validation.middleware.ts`의 `ValidationTarget`은 그 파일에서만 쓰는 한 줄 타입이라 따로 떼지 않고 그 파일에 둡니다. `db`에서 뽑은 `Db`도 `db.ts`에 둡니다. 상수 폴더 `common/constants`와 공용 스키마 폴더 `common/schemas`에는 값만 둡니다. 한 도메인에 묶인 타입(Prisma 계약에서 뽑은 행 타입, 상수에서 뽑은 `TripStatus`, 고캠핑 응답 스키마에서 뽑은 `GoCampingItem`, 리포지토리·서비스가 함께 쓰는 캠핑 계획 입력 타입)은 `src/interfaces/<도메인>.interface.ts`에, 여러 도메인이 함께 쓰는 타입(`IdParams`)은 `src/common/interfaces/<이름>.interface.ts`에 둡니다.
+- 타입만 담은 파일은 그 타입을 쓰거나 뽑아 온 파일 옆에 `<파일 이름>.interface.ts`로 둡니다(`dto/*.dto.interface.ts` 등). 한 파일에서만 쓰는 타입은 따로 떼지 않고 그 파일에 둡니다(`validation.middleware.ts`의 `ValidationTarget`, `di/container.ts`의 `Cradle`). `db`에서 뽑은 `Db`도 `db.ts`에 둡니다. 상수 폴더 `common/constants`와 공용 스키마 폴더 `common/schemas`에는 값만 둡니다. 한 도메인에 묶인 타입(Prisma 계약에서 뽑은 행 타입, 상수에서 뽑은 `TripStatus`, 고캠핑 응답 스키마에서 뽑은 `GoCampingItem`, 리포지토리·서비스가 함께 쓰는 캠핑 계획 입력 타입)은 `src/interfaces/<도메인>.interface.ts`에, 여러 도메인이 함께 쓰는 타입(`IdParams`)은 `src/common/interfaces/<이름>.interface.ts`에 둡니다.
 
 ## 시작하기
 
